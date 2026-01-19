@@ -7,7 +7,7 @@ jobs:
 
     lint:
         name: Lint 
-        runs-on: unbuntu@latest
+        runs-on: unbuntu-latest
 
         steps: 
             - name: Checkout latest code
@@ -26,7 +26,7 @@ jobs:
 
     build:
         name: Build 
-        runs-on: unbuntu@latest
+        runs-on: unbuntu-latest
         needs: lint
 
         steps: 
@@ -47,7 +47,7 @@ jobs:
     
     test:
         name: Test
-        runs-on: unbuntu@latest
+        runs-on: unbuntu-latest
         needs: build
 
         steps: 
@@ -73,7 +73,7 @@ jobs:
     
     deploy:
         name: Deploy
-        runs-on: unbuntu@latest
+        runs-on: unbuntu-latest
         needs: test
 
         steps: 
