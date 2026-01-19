@@ -4,8 +4,9 @@ name: Standard CI
 on: push 
 
 jobs:
-    build-test:
-        name: Build test and Deploy
+
+    lint:
+        name: Lint 
         runs-on: unbuntu@latest
 
         steps: 
@@ -22,6 +23,42 @@ jobs:
 
             - name: Run lint
               run: npm run lint
+
+    build:
+        name: Build 
+        runs-on: unbuntu@latest
+
+        steps: 
+            - name: Checkout latest code
+              uses: actions/checkout@v4
+
+            - name: Setup Nodejs
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Install dependencies
+              run: npm install
+            
+            - name: Run build
+              run: npm run build
+
+    
+    test:
+        name: Test
+        runs-on: unbuntu@latest
+
+        steps: 
+            - name: Checkout latest code
+              uses: actions/checkout@v4
+
+            - name: Setup Nodejs
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Install dependencies
+              run: npm install
             
             - name: Run build
               run: npm run build
@@ -31,8 +68,24 @@ jobs:
             
             - name: Run deploy
               run: npm run deploy
+    
+    deploy:
+        name: Deploy
+        runs-on: unbuntu@latest
 
-              
-            
-            
+        steps: 
+            - name: Checkout latest code
+              uses: actions/checkout@v4
 
+            - name: Setup Nodejs
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Install dependencies
+              run: npm install
+            
+            - name: Run deploy
+              run: npm run deploy
+    
+   
