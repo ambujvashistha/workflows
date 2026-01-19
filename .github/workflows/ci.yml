@@ -27,7 +27,6 @@ jobs:
     build:
         name: Build 
         runs-on: unbuntu-latest
-        needs: lint
 
         steps: 
             - name: Checkout latest code
@@ -48,7 +47,7 @@ jobs:
     test:
         name: Test
         runs-on: unbuntu-latest
-        needs: build
+        needs: [build,lint]
 
         steps: 
             - name: Checkout latest code
